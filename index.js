@@ -15,7 +15,7 @@ function readFormData() {
     var formData = {};
     formData["name"] = document.getElementById("name").value;
     formData["email"] = document.getElementById("email").value;
-    formData["clas"] = document.getElementById("clas").value;
+    formData["ID"] = document.getElementById("ID").value;
     formData["contact"] = document.getElementById("contact").value;
     return formData;
 }
@@ -32,14 +32,13 @@ function insertNewRecord(data) {
     cell4 = newRow.insertCell(3);
     cell4.innerHTML = data.contact;
     cell5 = newRow.insertCell(4);
-    cell5.innerHTML = `<a onclick="editRecord(this)"> Edit</a>
-                       <a onclick="deleteRecord(this)"> Delete</a>`; 
+    cell5.innerHTML = `<a onclick="onEdit(this)"> Edit</a> <a onclick="onDelete(this)"> Delete</a>`; 
 }
 
 function resetForm() {
     document.getElementById("name").value = "";
     document.getElementById("email").value = "";
-    document.getElementById("clas").value = "";
+    document.getElementById("ID").value = "";
     document.getElementById("contact").value = "";
 }
 
@@ -47,7 +46,7 @@ function onEdit(td) {
     selectedRow = td.parentElement.parentElement;
     document.getElementById("name").value = selectedRow.cells[0].innerHTML;
     document.getElementById("email").value = selectedRow.cells[1].innerHTML;
-    document.getElementById("clas").value = selectedRow.cells[2].innerHTML;
+    document.getElementById("ID").value = selectedRow.cells[2].innerHTML;
     document.getElementById("contact").value = selectedRow.cells[3].innerHTML;
 }
 
@@ -66,6 +65,6 @@ document.getElementById("submit").addEventListener("click", function(event){
 function updateRecord(formData) {
     selectedRow.cells[0].innerHTML = formData.name;
     selectedRow.cells[1].innerHTML = formData.email;
-    selectedRow.cells[2].innerHTML = formData.clas;
+    selectedRow.cells[2].innerHTML = formData.ID;
     selectedRow.cells[3].innerHTML = formData.contact;
 }
